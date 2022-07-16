@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+
+{% set userFirstName= user.first_name | upper() | default('User', true)%}
+{% set userLastName= user.last_name | upper() | default('1', true) %}
+{% set pageTitle =  'Welcome To ' + userFirstName + ' ' + userLastName + ' Page'%}
+{% set footerTitle = userFirstName + ' ' + userLastName%}
+{% set footerEmail = user.email%}
+{% set footerPhone = user.phone_number%}
+{% set headerTitle = 'This is me'%}
+
+{% block pageBody %}
+    {{ super() }}
+ {% if user %}
+     <div>
+     <h1><i aria-hidden="true"></i> {{ user.first_name | title() | default('User', true)}} Details:</h1>
+
+    {% for key, value in user.items() %}
+                 {% if key=="email" %}
+                        <p>{{ key | title()}}: {{ value}}</p>
+                    {% else %}
+                        <p>{{ key |replace("_", " ") | title()}}: {{ value | title() }}</p>
+                {% endif %}
+    {% endfor %}
+
+    <h1><i aria-hidden="true"></i> {{ user.first_name | title() | default('User', true)}} Hobbies:</h1>
+    {% if hobbies %}
+        <ul>
+            {% for hobbie in hobbies |unique()|sort() %}
+                <li>{{ hobbie |lower() }}</li>
+            {% endfor %}
+        </ul>
+        {% else %}
+            <h4> {{ user.first_name | title() | default('User', true)}} Non hobbies has been added yet </h4>
+        {% endif %}
+
+
+     <h1><i aria-hidden="true"></i> {{ user.first_name | title() | default('User', true)}} Favorite Movies:</h1>
+
+    {% for key, movies_list in movies_dictionary.items() %}
+                        <h2>{{ key | title()}}:</h2>
+        <p>
+        {% for movie in movies_list | unique() | sort() %}
+             {{ movie | lower()}},
+            {% endfor %}
+        </p>
+    {% endfor %}
+
+    {% if topMovie %}
+                    <a class=aLinks href=/top_movie> {{ user.first_name | title() | default('User', true) }}'s top movie </a>
+                {% endif %}
+
+     {% else %}
+     <h1>user not found</h1>
+ {% endif %}
+    </div>
+
+{% endblock %}

@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block pageBody %}
+
+
+    <div>
+    <div class="grid">
+     <h2>Frontend</h2>
+        <form id="from_frontend" class="search">
+            <div class="form-group">
+            <input class="form-control" type="number" name="user_id" placeholder="ID" pattern="[0-9]" required>
+           </div>
+        </form>
+
+        <div class="form-group">
+            <button class="button" onclick="frontendFunction()">Search</button>
+           </div>
+        <main></main>
+        <br><br><br>
+
+    <h2>Backend</h2>
+        <form action="/fetch_back_end" id="from_backend" class="search">
+            <div class="form-group">
+            <input class="form-control" type="number" name="id_backend" placeholder="ID" pattern="[0-9]" required>
+           </div>
+            <div class="form-group">
+             <input class="button" type="submit" value="Search">
+            </div>
+        </form>
+
+        </div>
+    </div>
+
+     {% if userFirstName %}
+
+            <div class="polaroid" style="background-color: white; width: 20%; height: 50%; margin-left: 40%;   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+            <img style=" width:100%" src="{{picture}}" alt="Profile Picture"/>
+             <div class="container" style="padding: 10px 20px " >
+            <h4> {{userFirstName}} {{userLastName}}</h4>
+                 <h6> email:  {{userEmail}} </h6>
+               <a href="mailto:{{ userEmail }}">Send Email</a>
+              </div>
+            </div>
+    {% endif %}
+
+
+{% endblock %}
+

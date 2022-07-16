@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+     <link  href="{{ url_for('static', filename='header.css') }}" rel="stylesheet"/>
+
+</head>
+<body>
+   {% include 'navbar3.html' %}
+<header class="header">
+  <div class="brand-box">
+    <span class="brand"></span>
+  </div>
+
+  <div class="text-box">
+    <h1 class="heading-primary">
+      <span class="heading-primary-main">{{ pageTitle }}</span>
+      <span class="heading-primary-sub">{{ headerTitle}}</span>
+    </h1>
+
+  </div>
+</header>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link  href= "{{ url_for('static', filename='navbar3.css') }}" rel="stylesheet"/>
+</head>
+<body>
+<div class="topnav">
+  <a href="/">Home Page</a>
+  <a href="/contact">Contact Form</a>
+  <a href="/assignment3_1">assignment3_1</a>
+  <a href="/assignment3_2">assignment3_2</a>
+  <a href="/assignment_4">assignment_4</a>
+  <a href="/assignment4_outer_source">assignment4_outer_source</a>
+     {% if session['registered'] %}
+        <h5 class="sign_in_massage">Hi! You registered as {{ session['username_new'] }}</h5>
+         <a class="logout_button" href="/logout"}>LogOut</a>
+
+        {% endif %}
+
+</div>
+
+</body>
+</html>

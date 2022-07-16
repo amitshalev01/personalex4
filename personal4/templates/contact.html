@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ 
+    <title>Document</title>
+     <link  href= "{{ url_for('static', filename='styling.css') }}" rel="stylesheet"/>
+    <script defer src="{{ url_for('static', filename='javaScriptFun.js') }}"></script>
+
+</head>
+<body>
+    <div class="mainheader">
+        Basketball Vintage Store
+       </div>
+
+ {% include 'navbar3.html' %}
+
+ <span id="userForm">
+
+    <h1 > WE WANT YOU</h1>
+    <span style="text-align: center; border:3px solid rgb(1, 11, 15);padding: 5px;text-align:center;font-size:35px;">
+        Contact us
+    </span>
+   
+    <p class="important">
+       Insert your details below
+    </p>
+    <form action="URL">
+        <label for="Full Name">Full Name</label><br>
+        <input type="text" id="Full Name" name="Full Name" ><br><br>
+        <label for="Date Of Birth">Date Of Birth</label><br>
+        <input type="date" id="Date Of Birth" name="Date Of Birth" ><br><br>
+        <label for="Phone">Phone Number</label><br>
+        <input type="text" id="Phone" name="Phone Number" ><br><br>
+        <label for="email">Email</label> <br>
+        <input type="email" id="email" name="email"><br><br>
+        <label for="points">How would you rate your basketball knowledge? (between 0 and 5):</label> <br>
+        <input type="range" id="points" name="points" min="0" max="5"> <br><br>
+        <label for="resume">Add your resume</label> <br>
+        <input type="file" id=""resume name="resume" > <br><br>
+        <br>
+            </form>
+
+            <button id="submit" class="mybutton"  onclick="sentMassege()">submit </button><br>
+            <p id="sent">
+                The details were sent successfully
+             </p>
+
+            <br><br><br>
+        
+
+
+ </span>
+   
+           
+</body>
+</html>

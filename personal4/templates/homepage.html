@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <title>Document</title>
+
+     <link  href= "{{ url_for('static', filename='styling.css') }}" rel="stylesheet"/>
+    <script defer src="{{ url_for('static', filename='javaScriptFun.js') }}"></script>
+
+</head>
+<body>
+    <div class="mainheader">
+        Basketball Vintage Store
+       </div>
+
+ {% include 'navbar3.html' %}
+    <br><br>
+
+
+
+
+    <div id="aboutUs">
+        <h1>About Us...</h1>
+        <p>FIBA, the International Basketball Federation, 
+            is the world governing body for basketball.</p>
+            <p>Founded in 1932, we bring together 212 National Basketball
+               </p>
+                <p>Federations from all over the world.
+                    </p>
+    
+    <span>
+        <button id="learn more" class="mybutton"  onclick="learnMorebutton()">learn more</button><br>
+
+        <div id="moreLinks">
+                <li class="more"><a class="amore" href="https://www.nba.com/games">NBA</a></li>
+                <li class="more"><a class="amore" href="https://www.fiba.basketball/">FIBA</a></li>
+        </div><br>
+        <div class="ball">PLAY</div>
+    </span>
+    </div><br><br>
+
+
+    <div class="photos"> 
+
+        <div  class="images" id="image1">
+          <img class="image" src="{{ url_for('static', filename='im1.jpg') }}"  >
+            <div class="frame">
+            </div>
+        </div>
+    
+
+    
+        <div  class="images" id="image2">
+             <img class="image" src="{{ url_for('static', filename='im7.jpg') }}" >
+            <div class="frame">
+            </div>
+        </div>
+    
+    
+        <div  class="images" id="image3">
+             <img class="image" src="{{ url_for('static', filename='im3.jpg') }}" >
+
+            <div class="frame">
+            </div>
+        </div>
+    
+        <div  class="images" id="image4">
+            <img class="image" src="{{ url_for('static', filename='im4.jpg') }}"  >
+            <div class="frame">
+            </div>
+        </div>
+
+        <div  class="images" id="image5">
+             <img class="image" src="{{ url_for('static', filename='im5.jpg') }}"  >
+            <div class="frame">
+            </div>
+        </div>
+
+        <div  class="images" id="image6">
+           <img class="image" src="{{ url_for('static', filename='im6.jpg') }}" >
+            <div class="frame">
+            </div>
+        </div>
+    
+        <br><br>
+    
+    </div>
+
+   
+</body>
+</html>

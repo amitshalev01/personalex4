@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+     <link  href= "{{ url_for('static', filename='assignment3.css') }}" rel="stylesheet"/>
+    <script defer src="{{ url_for('assignment_4.static', filename='frontend.js') }}"></script>
+</head>
+<body>
+
+ {% include('header.html') %}
+    {% block pageBody %}
+            <a class="aLinks" href="https://www.youtube.com/watch?v=_5o_UAucmYc">find more about me</a>
+    {% endblock %}
+
+ {% include('footer.html') %}
+
+</body>
+</html>

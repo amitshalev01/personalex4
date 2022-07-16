@@ -1,0 +1,105 @@
+{% extends 'base.html' %}
+
+{% if session['register_display_massage'] %}
+            {% set headerTitle =  'Hi ' +  session['username'] | title()  + '!' %}
+        {% else %}
+            {% set headerTitle =  'Welcome! here you can use the search form or make registeration' %}
+        {% endif %}
+
+{% block pageBody %}
+
+    <div class="grid">
+
+     <h2>Search for user</h2>
+        <br>
+
+
+    <form action="/assignment3_2" method="get" class="search">
+
+      <div class="form__field">
+        <input type="search" name="user_id" placeholder="Enter user's ID" class="form__input">
+        <input type="submit" value="Search" class="button">
+      </div>
+
+    </form>
+    <br><br><br><br><br><br>
+
+    </div>
+
+
+          {% if user_name %}
+              <ol>
+            <h2>User Name: {{ user_name| title() }}</h2>
+            <p>ID:{{ user_ID }}</p>
+            <p>Email: {{ user_email }}</p>
+            <p>Age: {{ user_age }}</p>
+
+              </ol>
+        {% endif %}
+
+        {% if message %}
+            <h3 style="color: red">{{ message }}</h3>
+        {% endif %}
+
+        {% if users %}
+            <ol>
+                {% for k, values in users.items() %}
+                    <h2>{{k}}:
+                    </h2>
+                     {% for key, value in values.items() %}
+                         {% if key!='user_password' %}
+                             {% if key=='user_email' %}
+                                <p>
+                                 {{ key|replace("_", " ")| title()}} : {{ value}}
+                                </p>
+                                 {% else %}
+                                <p>
+                                 {{ key|replace("_", " ")| title()}} : {{ value| title()}}
+                                </p>
+                            {% endif %}
+                         {% endif %}
+                     {% endfor %}
+
+                {% endfor %}
+
+            </ol>
+        {% endif %}
+     {% if session['registered'] %}
+         #hide registration form boxes
+        {% else %}
+     <div class="grid">
+     <h2>Registration Form</h2>
+        <form action="/assignment3_2" method="post" class="search">
+             <div class="form-group">
+            <input class="form-control" type="text" name="user_name" placeholder="Username" required>
+            </div>
+
+            <div class="form-group">
+            <input class="form-control" type="text" name="user_id" placeholder="ID (9 digits)" pattern="[0-9]{9}" required>
+           </div>
+
+           <div class="form-group">
+            <input class="form-control" type="email" name="user_email" placeholder="Email address" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required>
+           </div>
+
+           <div class="form-group">
+            <input class="form-control" type="password" name="user_password" placeholder="Password (number,upper&lower case)" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}" required>
+           </div>
+
+           <div class="form-group">
+            <input class="form-control"  name="user_age" placeholder="Age (between 21 and 75)" min="21" max="75" required><br>
+           </div>
+
+           <div class="form-group">
+            <input class="button" type="submit" value="register">
+           </div>
+        </form>
+     {% if register_display_massage %}
+            <h3 style="color: red">{{ register_display_massage }}</h3>
+        {% endif %}
+        </div>
+     </div>
+ {% endif %}
+
+
+{% endblock %}
